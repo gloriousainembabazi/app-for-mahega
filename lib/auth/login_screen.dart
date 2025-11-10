@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'forgot_password_screen.dart';
-import 'verification_screen.dart';
 import '../../widgets/custom_text_form_field.dart';
 
 class LoginScreen extends StatefulWidget {

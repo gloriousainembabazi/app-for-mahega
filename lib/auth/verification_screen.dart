@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../screens/home_screen.dart';
 
 class VerificationScreen extends StatefulWidget {
   const VerificationScreen({super.key});
