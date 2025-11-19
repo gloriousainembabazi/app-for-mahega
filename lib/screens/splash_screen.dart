@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../screens/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -21,6 +20,22 @@ class SplashScreenState extends State<SplashScreen> {
     Navigator.pushReplacementNamed(context, '/onboarding');
   }
 
+  Widget _buildLogo() {
+    return Image.asset(
+      'assets/images/logo2.jpg',
+      width: 120,
+      height: 120,
+      fit: BoxFit.contain,
+      errorBuilder: (context, error, stackTrace) {
+        return const Icon(
+          Icons.business,
+          size: 80,
+          color: Colors.white,
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,14 +44,10 @@ class SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(
-              Icons.business,
-              size: 80,
-              color: Colors.white,
-            ),
+            _buildLogo(),
             const SizedBox(height: 20),
             Text(
-              'MAHEGA',
+              'HIS GRACE DRUGSHOP',
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,

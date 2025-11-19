@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../auth/auth_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -14,19 +13,19 @@ class OnboardingScreenState extends State<OnboardingScreen> {
 
   final List<OnboardingPage> _onboardingPages = [
     OnboardingPage(
-      title: 'Welcome to Mahega',
+      title: 'Welcome to His Grace Drugshop',
       description: 'Discover amazing features that will help you manage your business efficiently.',
-      icon: Icons.business_center,
+      imagePath: 'assets/images/logo2.jpg',
     ),
     OnboardingPage(
       title: 'Easy Management',
       description: 'Streamline your operations with our intuitive tools and features.',
-      icon: Icons.analytics,
+      imagePath: 'assets/images/logo2.jpg',
     ),
     OnboardingPage(
       title: 'Get Started',
-      description: 'Join thousands of businesses using Mahega to grow their operations.',
-      icon: Icons.rocket_launch,
+      description: 'Join thousands of drugshop using His Grace Drugshop to grow their operations.',
+      imagePath: 'assets/images/logo2.jpg',
     ),
   ];
 
@@ -36,6 +35,32 @@ class OnboardingScreenState extends State<OnboardingScreen> {
       body: SafeArea(
         child: Column(
           children: [
+            
+            Padding(
+              padding: const EdgeInsets.only(top: 40.0),
+              child: Image.asset(
+                'assets/images/logo2.jpg',
+                width: 80,
+                height: 80,
+                fit: BoxFit.contain,
+                errorBuilder: (context, error, stackTrace) {
+                  return const Icon(
+                    Icons.business,
+                    size: 60,
+                    color: Colors.blue,
+                  );
+                },
+              ),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              'HIS GRACE DRUGSHOP',
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+            const SizedBox(height: 10),
             Expanded(
               child: PageView.builder(
                 controller: _pageController,
@@ -107,12 +132,12 @@ class OnboardingScreenState extends State<OnboardingScreen> {
 class OnboardingPage {
   final String title;
   final String description;
-  final IconData icon;
+  final String imagePath;
 
   OnboardingPage({
     required this.title,
     required this.description,
-    required this.icon,
+    required this.imagePath,
   });
 }
 
@@ -121,23 +146,52 @@ class OnboardingPageWidget extends StatelessWidget {
 
   const OnboardingPageWidget({super.key, required this.page});
 
+  Widget _buildImage() {
+    return Image.asset(
+      page.imagePath,
+      width: 280,
+      height: 280,
+      fit: BoxFit.contain,
+      errorBuilder: (context, error, stackTrace) {
+        // Fallback icons for each onboarding page
+        IconData fallbackIcon;
+        switch (page.title) {
+          case 'Welcome to His Grace Drugshop':
+            fallbackIcon = Icons.local_pharmacy;
+            break;
+          case 'Easy Management':
+            fallbackIcon = Icons.analytics;
+            break;
+          case 'Get Started':
+            fallbackIcon = Icons.rocket_launch;
+            break;
+          default:
+            fallbackIcon = Icons.local_pharmacy;
+        }
+        
+        return Icon(
+          fallbackIcon,
+          size: 120,
+          color: Colors.blue.shade300,
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(40.0),
+      padding: const EdgeInsets.all(30.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            page.icon,
-            size: 100,
-            color: Colors.blue,
-          ),
+          _buildImage(),
           const SizedBox(height: 40),
           Text(
             page.title,
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
+                  color: Colors.blue.shade800,
                 ),
             textAlign: TextAlign.center,
           ),

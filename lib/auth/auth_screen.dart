@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import '../auth/login_screen.dart';
-import '../auth/registration_screen.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
@@ -21,7 +19,7 @@ class AuthScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               Text(
-                'Welcome to Mahega',
+                'Welcome to His Grace Drugshop',
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),

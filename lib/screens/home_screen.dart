@@ -44,7 +44,7 @@ class HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mahega Dashboard'),
+        title: const Text('His Grace Drugshop Dashboard'),
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
         actions: [
@@ -62,7 +62,7 @@ class HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Welcome to Mahega!',
+                'Welcome to His Grace Drugshop!',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
